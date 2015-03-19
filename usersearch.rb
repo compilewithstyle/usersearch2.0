@@ -1,5 +1,19 @@
 #!/usr/bin/env ruby
 
+=begin rdoc
+
+	Author:
+		Nicholas Siow | compilewithstyle@gmail.com
+
+	Description:
+		Simple Ruby wrapper for the user-lookup procedure. Parses and validates user
+		input and then constructs a MySQL query to find the user based on the given
+		information.
+
+		The majority of this script is devoted to input validation and error handling.
+
+=end
+
 require 'json'
 require 'time'
 require 'mysql'
@@ -92,11 +106,11 @@ OptionParser.new do |opts|
 		puts opts
 	end
 
-	if ARGV.size != 3
+	if ARGV.size < 3
 		puts opts
 		exit
 	end
-end
+end.parse!
 
 # use select statements to parse out the arguments from what is given
 input = OpenStruct.new
