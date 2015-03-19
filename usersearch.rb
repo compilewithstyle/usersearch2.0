@@ -43,6 +43,8 @@ end
 #	define program constants
 #--------------------------------------------------------------------------------
 
+DB_PASSWORD = `cat ./password`.strip
+
 # use a here-doc to define the usersearch MYSQL procedure
 PROCEDURE = <<-PROC
 
@@ -154,7 +156,7 @@ debug "Using SQL call: <<<\n#{template}\n>>>"
 
 begin
 	# connect to the database
-	conn = Mysql.new 'localhost', 'nsiow', '', 'usersearch_test'
+	conn = Mysql.new 'localhost', 'nsiow', DB_PASSWORD, 'usersearch_test'
 
 	# submit your query
 	res = conn.query template
